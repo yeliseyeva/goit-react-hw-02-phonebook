@@ -4,9 +4,9 @@ function ContactsList ({contacts}) {
 
         return (
             <ul>
-                {contacts.map(contact => (
+                {contacts.map(({name, number}) => (
                     <li>
-                        <p>{contact}</p>
+                        <p>{name}: {number}</p>
                     </li>
                 ))}
             </ul>
