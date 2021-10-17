@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import s from "../ContactForm/ContactForm.module.css"
 // import PropTypes from "prop-types";
 
 class ContactForm extends Component {
@@ -31,6 +32,7 @@ class ContactForm extends Component {
                 <input
                     type="text"
                     placeholder="Enter name"
+                    className={s.enterContact}
                     value={this.state.name}
                     onChange={this.handleChange}
                     name="name"
@@ -42,6 +44,7 @@ class ContactForm extends Component {
                 <input
                 type="tel"
                 placeholder="Enter number"
+                className={s.enterContact}
                 value={this.state.number}
                 onChange={this.handleChange}
                 name="number"
@@ -50,7 +53,7 @@ class ContactForm extends Component {
                 required
                 />
 
-                <button type="submit">Add</button>
+                <button type="submit" className={s.submitButton}>Add</button>
             </form>
         )
     }

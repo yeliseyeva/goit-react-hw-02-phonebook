@@ -3,6 +3,7 @@ import ContactsList from "./Components/ContactsList/ContactsList";
 import ContactForm from "./Components/ContactForm/ContactForm";
 import Container from "./Components/Container/Container";
 import Filter from "./Components/Filter/Filter";
+import shortid from "shortid";
 
 class App extends Component {
   state = {
@@ -20,8 +21,14 @@ class App extends Component {
     ? alert("A user with the same name has already been added")
     : this.setState((prevState) => ({
       contacts: [
-        {...contact}, ...prevState.contacts
+        {id: shortid.generate(), ...contact}, ...prevState.contacts
       ]
+    }))
+  }
+
+  onDelete = e => {
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter((contact) => contact.id !== e)
     }))
   }
 
@@ -40,7 +47,7 @@ class App extends Component {
 
       <Container title="Contacts">
         <Filter value={this.state.filter} changeFilter={this.changeFilter}/>
-        <ContactsList contacts={filterContacts} name={this.state.name}/>
+        <ContactsList contacts={filterContacts} name={this.state.name} onDelete={this.onDelete}/>
       </Container>
       </>
     )
